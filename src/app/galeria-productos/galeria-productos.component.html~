@@ -1,0 +1,7 @@
+<div class="row">
+	<div class="column small-12">
+		<div class="contenedor-productos" *ngFor="let producto of listaProductos">
+			<producto [producto]="producto"></producto>	
+		</div>	
+	</div>
+</div>
