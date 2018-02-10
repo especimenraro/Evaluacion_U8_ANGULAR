@@ -7,7 +7,7 @@ import {Pedido} from './pedidos'
   styleUrls: ['./pedidos.component.css']
 })
 export class PedidosComponent implements OnInit {
-@Input() pedido: Pedido;
+@Input pedido: Pedido;
   constructor() { }
 
   ngOnInit() {

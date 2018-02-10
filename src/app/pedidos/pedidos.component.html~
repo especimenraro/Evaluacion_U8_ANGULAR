@@ -11,7 +11,7 @@
 		</div>
 		<div class="row">
 			<div class="column small-12 contenedor-subtotal-pedido">
-				<h5>Subtotal: ${{pedido.subtotal}}</h5>			
+				<p>Subtotal: ${{pedido.subtotal}}</p>			
 			</div>		
 		</div>	
 	</div>

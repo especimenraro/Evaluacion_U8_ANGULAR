@@ -6,10 +6,10 @@ margin-bottom: 1px;
 background-color: lightgray;
 }
 .contenedor-datos-pedido {
-background-color: rgba(230,230,230,1);
+background-color: whitesmoke;
 }
 .contenedor-subtotal-pedido {
-background-color: rgba(230,230,230,1);
+background-color: whitesmoke;
 }
 .contenedor-imagen-pedido {
 	padding: 2px 2px ;

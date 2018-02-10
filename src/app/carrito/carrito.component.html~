@@ -1,0 +1,30 @@
+<div class="row">
+	<div class="column small-12 contenedor-carrito">
+		<div class="row">
+			<div class="column small-12">
+				<h2>Carrito de compras</h2>			
+				<hr>
+			</div>		
+		</div>
+		<div class="row align-left">
+			<div class="column small-6 contenedor-lista-pedido">
+				<pedido [pedido]="pedido" *ngFor="let pedido of listaPedido">	</pedido>
+			</div>
+			<div class="column small-6 contenedor-total">
+				<div class="row">
+					<div class="column small-12">
+						<h4 class="total">Total: ${{total}}</h4>	
+					</div>				
+				</div>
+				<div class="row align-right">
+					<div class="column small-3">
+						<a href="" class="button basic secondary boton-cancelar">Cancelar</a>
+					</div>	
+					<div class="column small-3">
+						<a href="" class="button basic success boton-pagar">Pagar</a>
+					</div>				
+				</div>
+			</div>		
+		</div>	
+	</div>
+</div>

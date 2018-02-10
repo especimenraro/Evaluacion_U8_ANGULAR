@@ -1,7 +1,9 @@
 .contenedor-producto {
 margin: 3px 3px 3px 3px;
+padding: 5px 5px 5px 5px;
 width: 300px;
 border: 1px solid green;
+background-color: rgba(230,230,230,1);
 }
 .contenedor-botones {
 	position: relative;

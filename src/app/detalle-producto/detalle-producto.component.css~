@@ -8,8 +8,3 @@ border-left: 1px solid gray;
 .contenedor-producto-botones {
 margin: 5px 5px;
 }
-
-.contenedor-producto-imagen {
-padding: 5px 5px;
-background-color: whitesmoke;
-}
