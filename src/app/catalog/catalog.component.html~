@@ -15,6 +15,7 @@
 			<div class="column small-12 contenedor-galeria">
 						<galeria-productos></galeria-productos>
 						<carrito></carrito>
+						<detalle-producto></detalle-producto>
 			</div>		
 		</div>	
 	</div>

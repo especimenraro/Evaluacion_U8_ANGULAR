@@ -1,7 +1,7 @@
 <div class="top-bar">
-<h3 class="menu-text align-left">Catálog de Productos</h3>
+<h3 class="menu-text align-left">Catálogo de Productos</h3>
 <form class="align-right">
 	<label>¿Qué estás buscando?</label>
-	<input type="text"/>
+	<input (keyup)='onChange(input.value)' type="text" #input>
 </form>
 </div>

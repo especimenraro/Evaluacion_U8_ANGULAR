@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
 import {InicioComponent} from './inicio/inicio.component';
 import {CatalogComponent} from './catalog/catalog.component';
-/*import {BarraSupComponent} from './barra-sup/barra-sup.component';*/
+import {PeticionService} from './peticion.service';
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [PeticionService]
 })
 export class AppComponent {
   

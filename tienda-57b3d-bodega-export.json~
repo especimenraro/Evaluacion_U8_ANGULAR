@@ -1,0 +1,19 @@
+[ {
+  "descripcion" : "Lorem ipsum dolor sit amet, consecteteur adipiscing elit eget vulputate. Arcu lorem turpis fusce, feugiat, amet. Felis nulla elit. Blandit nisi, pede, in felis ve netus. Scelerisque hac, sapien. Libero at, maecenas ligula. Platea natoque ac cubilia cras, consectetuer. Ante nulla dolor placerat ve, odio odio porta. Semper leo ut taciti facilisi in aptent fermentum cubilia",
+  "disponible" : 12,
+  "imagen" : "..imagenes/ajo.jpg",
+  "nombre" : "ajo",
+  "precio" : 300
+}, {
+  "descripcion" : "Lorem ipsum dolor sit amet, consecteteur adipiscing elit eget vulputate. Arcu lorem turpis fusce, feugiat, amet. Felis nulla elit. Blandit nisi, pede, in felis ve netus. Scelerisque hac, sapien. Libero at, maecenas ligula. Platea natoque ac cubilia cras, consectetuer. Ante nulla dolor placerat ve, odio odio porta. Semper leo ut taciti facilisi in aptent fermentum cubilia",
+  "disponible" : 34,
+  "imagen" : "..imagenes/palta.png",
+  "nombre" : "palta",
+  "precio" : 1200
+}, {
+  "descripcion" : "Lorem ipsum dolor sit amet, consecteteur adipiscing elit eget vulputate. Arcu lorem turpis fusce, feugiat, amet. Felis nulla elit. Blandit nisi, pede, in felis ve netus. Scelerisque hac, sapien. Libero at, maecenas ligula. Platea natoque ac cubilia cras, consectetuer. Ante nulla dolor placerat ve, odio odio porta. Semper leo ut taciti facilisi in aptent fermentum cubilia",
+  "disponible" : 233,
+  "imagen" : "..imagenes/almendras.jpg",
+  "nombre" : "almendras",
+  "precio" : 3255
+} ]

@@ -18,7 +18,8 @@
 		</div>
 		<div class="row">
 			<div class="column small-12 contenedor-producto-botones">
-					<a href="" class="button" >Atrás</a>
+					<hr>
+					<a [routerLink]="['/catalogo']" class="button" >Atrás</a>
 			</div>		
 		</div>
 	</div>

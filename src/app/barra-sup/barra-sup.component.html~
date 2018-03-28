@@ -4,10 +4,10 @@
 </div>
 <div class="top-bar-right">
 <ul class="menu align-right">
-	<li class="icono"><p><i class="fi-thumbnails"></i></p></li>
-	<li class="icono"><p><i class="fi-shopping-cart"></i></p></li>
-	<li class="icono"><p><i class="fi-mail"></i></p></li>
-	<li class="icono"><p><i class="fi-arrow-right"></i></p></li>
+	<li class="icono"><a [routerLink]="['galeria']" ><i class="fi-thumbnails"></i></a></li>
+	<li class="icono"><a [routerLink]="['carrito']" ><i class="fi-shopping-cart icono"></i>{{items}}</a></li>
+	<li class="icono"><a [routerLink]="['carrito']" ><i class="fi-mail"></i></a></li>
+	<li class="icono"><a [routerLink]="['inicio']" ><i class="fi-arrow-right"></i></a></li>
 </ul>
 
 </div>

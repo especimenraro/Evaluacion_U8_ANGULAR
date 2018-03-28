@@ -13,12 +13,12 @@
 	<div class="card-section">
 		<div class="contenedor-botones">
 			<div class="contenedor-boton-ver-mas">
-			<a href="" class="button tiny">Ver Más</a>
+			<a routerLink="detalle/{{producto.nombre}}" class="button small">Ver Más</a>
 		</div>
 			<div class="contenedor-boton-anadir">
 				<div class="input-group">
 				<div class="input-group-button">
-					<input type="submit" class="button tiny" value="Añadir" />				
+					<input type="submit" class="button small" value="Añadir" />				
 				</div>
 				<input class="input-group-filed" min="1" max="999" type="number" value="1"/>
 			</div>
