@@ -29,5 +29,38 @@ export class PeticionService {
   updateGaleria() { 
   		return this.listaProductos;
   }
-         
+  
+  updateProducto(data: any[],key: any){
+  let disponible = data[0].disponible
+  let url = 'https://tienda-57b3d.firebaseio.com/bodega/' + key + '/disponible/.json';
+  let envio = this.http.put(url,JSON.stringify(disponible)).map((response: Response)=> response.json())
+    return envio
+  } // FIN UPDATE PRODUCTO       
+  
+  getCarrito = () => {
+ 	let data = this.http.get('https://tienda-57b3d.firebaseio.com/usuarios/0/carrito/.json').map((response: Response)=> response.json())
+    return data
+        } // FIN GET CARRITO
+        
+    updateCarrito(data: any[]) {
+    	 let url = 'https://tienda-57b3d.firebaseio.com/usuarios/0/carrito/.json';
+ 		 let envio = this.http.post(url,JSON.stringify(data[0])).map((response: Response)=> response.json())
+   	 return envio
+    
+    } // FIN UPDATE CARRITO    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

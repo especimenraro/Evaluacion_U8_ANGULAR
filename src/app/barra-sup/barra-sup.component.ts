@@ -9,13 +9,13 @@ import {VariablesService} from '../variables.service'
   
 })
 export class BarraSupComponent{
-items: number
+private items: number[];
+private cantidad: number[];
 
 constructor(private variable: VariablesService) {
 
-this.items = this.variable.leeCantidad();
-  
- 
+ this.items = this.variable.leeCantidad()
+
 }
 
   ngOnInit() {

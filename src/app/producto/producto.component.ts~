@@ -2,33 +2,51 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import {Producto} from './producto';
 import {VariablesService} from '../variables.service'
+import {PeticionService} from '../peticion.service';
 
 @Component({
   selector: 'producto',
   templateUrl: './producto.component.html',
   styleUrls: ['./producto.component.css'],
-  providers: [ServicioCuentasService]
+  providers: []
 })
 
 
 
 export class ProductoComponent implements OnInit {
 @Input() producto: Producto;
-  constructor(private http: Http, private cuentas: VariablesService) { }
+  constructor(private http: Http, private cuentas: VariablesService, private peticion: PeticionService) { }
 
   ngOnInit() {
   }
 
 agregaProducto(cantidad){
 	let disponible = this.producto.disponible;
+	let descripcion = this.producto.descripcion;
+	let imagen = this.producto.imagen;
 	let nombre =  this.producto.nombre;
+	let precio = this.producto.precio;
 	let subtotal = cantidad * this.producto.precio;
-	let data = [{'nombre': nombre, 'cantidad': cantidad, 'subtotal': subtotal}]
+	
 	if (cantidad <= disponible) {
 	
 		this.cuentas.escribeCantidad(1*cantidad);
-		//this.cuentas.updateCuenta(subtotal);
 		this.producto.disponible -= cantidad
+		let data = [{'nombre': nombre, 'disponible': this.producto.disponible, 'descripcion':descripcion,'imagen':imagen,'precio':precio}]
+		 this.peticion.getStock()
+					 		.subscribe(
+								(stock: Response) => {
+								
+												 for (let key in stock) {
+										      		if (stock[key].nombre == nombre) {
+										      			this.peticion.updateProducto(data,key).subscribe()									      		
+										      		} // FIN IF
+											      	
+									      		} // FIN FOR		
+											
+									}
+					  		)
+		
 	} else {
 		alert('Cantidad excede Disponibilidad')	
 	}

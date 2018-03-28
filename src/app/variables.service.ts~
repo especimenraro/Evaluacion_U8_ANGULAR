@@ -4,24 +4,23 @@ import { Injectable } from '@angular/core';
 export class VariablesService {
 
   constructor() { }
-private cantidad: number[]=[0]
-private total: number = 0
+private cantidad: number[] = [0]
+private total: number[] = [0]
 
 leeCantidad() {
-return this.cantidad[this.cantidad.length-1]
+return this.cantidad
 }
 
 escribeCantidad(nuevaCantidad){
-	this.cantidad.push(nuevaCantidad)
-	console.log('la cantidad nueva es:', this.variable.cantidad)
-}
+	this.cantidad[0] += nuevaCantidad
+	}
 
 leeTotal() {
 return this.total
 }
 
 escribeTotal(nuevoTotal){
-	this.total = nuevoTotal
+	this.total[0] = nuevoTotal
 }
 
 

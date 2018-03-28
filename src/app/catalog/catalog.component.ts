@@ -6,7 +6,7 @@ import {GaleriaProductosComponent} from '../galeria-productos/galeria-productos.
 import {CarritoComponent} from '../carrito/carrito.component';
 import {DetalleProductoComponent} from '../detalle-producto/detalle-producto.component';
 import {PeticionService} from '../peticion.service';
-
+import {VariablesService} from '../variables.service';
 
 @Component({
   selector: 'catalog',

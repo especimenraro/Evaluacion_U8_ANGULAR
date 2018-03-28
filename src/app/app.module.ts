@@ -15,7 +15,7 @@ import { ProductoComponent } from './producto/producto.component';
 import { CarritoComponent } from './carrito/carrito.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import {PeticionService} from './peticion.service';
-import {VariablesService} from './variables.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +35,7 @@ import {VariablesService} from './variables.service';
     HttpModule,
     AppRoutingModule
   ],
-  providers: [VariablesService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
