@@ -20,23 +20,51 @@ listaPedido: string[] = []
  this.peticion.getCarrito()
 					 		.subscribe(
 								(data: Response) => {
-								
-												let aux: string[] = [] 
-												let cantidad = 0
-					        
-												 for (let key in data) {
-										      		aux.push(data[key])
-											      	this.total += data[key].subtotal
-											      	cantidad += 1*data[key].unidades;
-									      		} // FIN FOR		
+												if (data.valueOf() !='null') {
+												console.log(data.valueOf())
+													let aux: string[] = [] 
+													let cantidad = 0
+													 for (let key in data) {
+											      		aux.push(data[key])
+												      	this.total += data[key].subtotal
+												      	cantidad += 1*data[key].unidades;
+												      	
+										      		} // FIN FOR		
 									      		
 											this.listaPedido = aux
-											this.cuentas.escribeCantidad(1*cantidad);
-												
-									}
-					  		)  
+											this.cuentas.updateCantidad(1*cantidad);
+											
+												} // FIN IF
+												else {
+														this.listaPedido = [nombre: 'Carrito Vacio',
+																									unidades: '',
+																									subtotal: '',
+																									imagen: '']
+												} // FIN ELSE
+									} // FIN DATA RESPONSE
+					  		)  // FIN SUBSCRIBE
+  } // FIN ON INIT
 
-  
-  }
+pagarCarrito() {
 
+	this.peticion.borraCarrito().subscribe()
+	this.cuentas.updateCantidad(0);
+	
+} // FIN PAGAR CARRITO
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

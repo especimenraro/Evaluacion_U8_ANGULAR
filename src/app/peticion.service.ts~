@@ -22,19 +22,17 @@ export class PeticionService {
 						      		 this.listaProductos.push(lista[key])
 							      	
 					      		} // FIN FOR	
- 	 
-	
- }         
+ }         // FIN NEWFLITER
  
   updateGaleria() { 
   		return this.listaProductos;
-  }
+  } // FIN UPDATE GALERIA
   
   updateProducto(data: any[],key: any){
-  let disponible = data[0].disponible
-  let url = 'https://tienda-57b3d.firebaseio.com/bodega/' + key + '/disponible/.json';
-  let envio = this.http.put(url,JSON.stringify(disponible)).map((response: Response)=> response.json())
-    return envio
+		  let disponible = data[0].disponible
+		  let url = 'https://tienda-57b3d.firebaseio.com/bodega/' + key + '/disponible/.json';
+		  let envio = this.http.put(url,JSON.stringify(disponible)).map((response: Response)=> response.json())
+		    return envio
   } // FIN UPDATE PRODUCTO       
   
   getCarrito = () => {
@@ -44,10 +42,19 @@ export class PeticionService {
         
     updateCarrito(data: any[]) {
     	 let url = 'https://tienda-57b3d.firebaseio.com/usuarios/0/carrito/.json';
- 		 let envio = this.http.post(url,JSON.stringify(data)).map((response: Response)=> response.json())
+ 		 let envio = this.http.post(url,JSON.stringify(data[0])).map((response: Response)=> response.json())
    	 return envio
     
-    } // FIN UPDATE CARRITO    
+    } // FIN UPDATE CARRITO  
+    
+    borraCarrito() {
+    		let url = 'https://tienda-57b3d.firebaseio.com/usuarios/0/carrito/.json'
+    		data = 'null'
+ 			let envio = this.http.put(url,JSON.stringify(data)).map((response: Response)=> response.json())
+   		return envio
+    
+    
+    }  //FIN BORRA CARRITO
 }
 
 

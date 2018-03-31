@@ -10,7 +10,7 @@
 			<div class="column small-6 contenedor-lista-pedido">
 				<pedido [pedido]="pedido" *ngFor="let pedido of listaPedido">	</pedido>
 			</div>
-			<div class="column small-6 contenedor-total">
+			<div class="column small-5 small-offset-1 contenedor-total">
 				<div class="row">
 					<div class="column small-12">
 						<h4 class="total">Total: ${{total}}</h4>	
@@ -21,7 +21,7 @@
 						<a href="" class="button basic secondary boton-cancelar">Cancelar</a>
 					</div>	
 					<div class="column small-3">
-						<a href="" class="button basic success boton-pagar">Pagar</a>
+						<a  [routerLink]="['galeria']" class="button basic success boton-pagar" (click)='pagarCarrito()'>Pagar</a>
 					</div>				
 				</div>
 			</div>		
