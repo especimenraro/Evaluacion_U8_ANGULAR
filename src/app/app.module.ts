@@ -15,6 +15,7 @@ import { ProductoComponent } from './producto/producto.component';
 import { CarritoComponent } from './carrito/carrito.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import {PeticionService} from './peticion.service';
+import {UsuariosService} from './usuarios.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,7 @@ import {PeticionService} from './peticion.service';
     HttpModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [UsuariosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

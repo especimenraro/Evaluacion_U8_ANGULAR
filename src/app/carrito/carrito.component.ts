@@ -21,8 +21,7 @@ listaPedido: string[] = []
 					 		.subscribe(
 								(data: Response) => {
 												if (data.valueOf() !='null') {
-												console.log(data.valueOf())
-													let aux: string[] = [] 
+												let aux: string[] = [] 
 													let cantidad = 0
 													 for (let key in data) {
 											      		aux.push(data[key])
@@ -36,10 +35,7 @@ listaPedido: string[] = []
 											
 												} // FIN IF
 												else {
-														this.listaPedido = ['nombre': 'Carrito Vacio',
-																									unidades: '',
-																									subtotal: '',
-																									imagen: '']
+														this.listaPedido = []
 												} // FIN ELSE
 									} // FIN DATA RESPONSE
 					  		)  // FIN SUBSCRIBE

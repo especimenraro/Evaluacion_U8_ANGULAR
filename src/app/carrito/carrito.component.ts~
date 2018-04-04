@@ -36,10 +36,7 @@ listaPedido: string[] = []
 											
 												} // FIN IF
 												else {
-														this.listaPedido = [nombre: 'Carrito Vacio',
-																									unidades: '',
-																									subtotal: '',
-																									imagen: '']
+														this.listaPedido = []
 												} // FIN ELSE
 									} // FIN DATA RESPONSE
 					  		)  // FIN SUBSCRIBE

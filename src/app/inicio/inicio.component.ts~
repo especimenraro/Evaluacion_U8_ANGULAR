@@ -1,18 +1,37 @@
 import { Component, OnInit } from '@angular/core';
+import {PeticionService} from '../peticion.service';
+import {UsuariosService} from '../usuarios.service';
+import {Response} from '@angular/http';
+import {Router} from '@angular/router';
+
 
 @Component({
   selector: 'inicio',
   templateUrl: './inicio.component.html',
-  styleUrls: ['./inicio.component.css']
+  styleUrls: ['./inicio.component.css'],
+  providers:[PeticionService,Location] 
 })
 export class InicioComponent implements OnInit {
 
-  constructor() { }
-  verificaUsuario() {
+  constructor(private peticion: PeticionService, private usuario: UsuariosService, private ir: Router) { }
   
-  
-  }
   ngOnInit() {
   }
+verificaUsers(user: any,pass: any){
+	let listaUsers = this.peticion.getUsers()
+		.subscribe((data: Response)=>{
+			for (let key in data) {
+				if (data[key].nombre == user) {
+					if (data[key].pass == pass) {
+						this.usuario.escribeUser(key)
+						this.ir.navigateByUrl('catalogo/galeria')
+						console.log('login ok')
+						return
+					}	 //	FIN IF PASS			
+				} // FIN IF USER
+			} // FIN FOR
+			alert('Usuario o Contraseña incorrectos')
+		}) // FIN SUBSCRIBE
 
+} // FIN VERIFICA USERS
 }

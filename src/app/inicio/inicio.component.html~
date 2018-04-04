@@ -1,5 +1,5 @@
- <div class="main">
-      <div class="login-container">
+ <div class="row main">
+      <div class="column small-12 login-container">
         <div class="callout primary login">
           <h4>Inicia sesión</h4>
           <form>
@@ -15,9 +15,8 @@
                 </label>
               </div>
               <div class="small-7 columns btn-container">
-              <a [routerLink]="['catalogo']">Enviar</a>
-                <!button type="submit" class="button">Enviar<!/button>
-              </div>
+              <a >Enviar</a>
+               </div>
             </div>
           </form>
         </div>

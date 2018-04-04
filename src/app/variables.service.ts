@@ -6,6 +6,7 @@ export class VariablesService {
   constructor() { }
 private cantidad: number[] = [0]
 private total: number[] = [0]
+private user
 
 leeCantidad() {
 return this.cantidad
