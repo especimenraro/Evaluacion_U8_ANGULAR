@@ -2,3 +2,9 @@
 margin-left: 5px;
 margin-right: 5px;
 }
+.notificacion {
+border-radius: 5px 5px 5px 5px;
+padding: 3px 3px 3px p3x;
+background-color: red;
+color: white;
+}

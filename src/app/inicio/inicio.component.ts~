@@ -3,6 +3,7 @@ import {PeticionService} from '../peticion.service';
 import {UsuariosService} from '../usuarios.service';
 import {Response} from '@angular/http';
 import {Router} from '@angular/router';
+import {VariablesService} from '../variables.service'
 
 
 @Component({
@@ -13,9 +14,10 @@ import {Router} from '@angular/router';
 })
 export class InicioComponent implements OnInit {
 
-  constructor(private peticion: PeticionService, private usuario: UsuariosService, private ir: Router) { }
+  constructor(private peticion: PeticionService, private usuario: UsuariosService, private ir: Router, private cuentas: VariablesService) { }
   
   ngOnInit() {
+  this.cuentas.borraDatosBodega()
   }
 verificaUsers(user: any,pass: any){
 	let listaUsers = this.peticion.getUsers()
@@ -24,6 +26,23 @@ verificaUsers(user: any,pass: any){
 				if (data[key].nombre == user) {
 					if (data[key].pass == pass) {
 						this.usuario.escribeUser(key)
+							this.peticion.getCarrito()
+							 		.subscribe(
+										(data: Response) => {
+														if (data.valueOf() !='null') {
+															let cantidad = 0
+															 for (let key in data) {
+													      		cantidad += 1*data[key].unidades;
+														      	
+												      		} // FIN FOR		
+													this.cuentas.updateCantidad(1*cantidad);
+													
+														} // FIN IF
+														else {
+																this.cuentas.updateCantidad(0);
+														} // FIN ELSE
+											} // FIN DATA RESPONSE
+							  		)  // FIN SUBSCRIBE GET CARRITO
 						this.ir.navigateByUrl('catalogo/galeria')
 						console.log('login ok')
 						return

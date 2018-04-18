@@ -11,15 +11,19 @@ import {VariablesService} from '../variables.service'
 export class BarraSupComponent{
 private items: number[];
 private cantidad: number[];
-
+private notificacion;
 constructor(private variable: VariablesService) {
 
  this.items = this.variable.leeCantidad()
+ if (this.items[0]>0) { this.notificacion = true} else {this.notificacion = false}
 
 }
 
   ngOnInit() {
   }
+ngDoCheck(){
+if (this.items[0]>0) { this.notificacion = true} else {this.notificacion = false}
 
+}
 }
  

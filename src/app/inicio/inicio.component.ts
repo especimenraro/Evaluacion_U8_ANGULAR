@@ -17,6 +17,7 @@ export class InicioComponent implements OnInit {
   constructor(private peticion: PeticionService, private usuario: UsuariosService, private ir: Router, private cuentas: VariablesService) { }
   
   ngOnInit() {
+
   }
 verificaUsers(user: any,pass: any){
 	let listaUsers = this.peticion.getUsers()
@@ -29,6 +30,7 @@ verificaUsers(user: any,pass: any){
 							 		.subscribe(
 										(data: Response) => {
 														if (data.valueOf() !='null') {
+														  this.cuentas.borraDatosBodega()
 															let cantidad = 0
 															 for (let key in data) {
 													      		cantidad += 1*data[key].unidades;

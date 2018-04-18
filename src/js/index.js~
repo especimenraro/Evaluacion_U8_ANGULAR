@@ -1,6 +1,10 @@
 $(function(){
 	 $.ajax({
           url: '../server/create_user.php',
+			dataType: "json",
+        cache: false,
+        processData: false,
+        contentType: false,          
           data: {},
           type: 'GET',
           success: (data) =>{
