@@ -31,7 +31,7 @@ agregaProducto(cantidad){
 	if (cantidad <= disponible) {
 	
 		this.cuentas.escribeCantidad(1*cantidad);
-		this.producto.disponible -= cantidad
+		disponible -= cantidad
 		let data = [{'nombre': nombre, 'disponible': this.producto.disponible, 'descripcion':descripcion,'imagen':imagen,'precio':precio}]
 		let carrito = [{'nombre': nombre,'unidades': cantidad, 'imagen': imagen, 'subtotal':subtotal }]
 		 this.peticion.getStock()
@@ -40,7 +40,7 @@ agregaProducto(cantidad){
 								
 												 for (let key in stock) {
 										      		if (stock[key].nombre == nombre) {
-										      			this.peticion.updateProducto(data,key).subscribe()									      		
+										      			this.cuentas.updateBodega(disponible,key)								      		
 										      		} // FIN IF
 											      	
 									      		} // FIN FOR		

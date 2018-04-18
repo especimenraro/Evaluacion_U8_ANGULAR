@@ -33,6 +33,7 @@ agregaProducto(cantidad){
 		this.cuentas.escribeCantidad(1*cantidad);
 		this.producto.disponible -= cantidad
 		let data = [{'nombre': nombre, 'disponible': this.producto.disponible, 'descripcion':descripcion,'imagen':imagen,'precio':precio}]
+		let carrito = [{'nombre': nombre,'unidades': cantidad, 'imagen': imagen, 'subtotal':subtotal }]
 		 this.peticion.getStock()
 					 		.subscribe(
 								(stock: Response) => {
@@ -45,7 +46,8 @@ agregaProducto(cantidad){
 									      		} // FIN FOR		
 											
 									}
-					  		)
+					  		) // FIN SUBSCRIBE
+			this.peticion.updateCarrito(carrito).subscribe()
 		
 	} else {
 		alert('Cantidad excede Disponibilidad')	

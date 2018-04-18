@@ -34,12 +34,25 @@ export class PeticionService {
 	  		return this.listaProductos;
 	  } // FIN UPDATE GALERIA
   
-	  updateProducto(data: any[],key: any){
-			  let disponible = data[0].disponible
-			  let url = 'https://tienda-57b3d.firebaseio.com/bodega/' + key + '/disponible/.json';
-			  let envio = this.http.put(url,JSON.stringify(disponible)).map((response: Response)=> response.json())
-			    return envio
+	  updateProducto(data,cantidad){
+	  
+	  				let producto = data
+	  				let disponible = cantidad
+	  				let url = 'https://tienda-57b3d.firebaseio.com/bodega/' + producto + '/disponible/.json';
+	  				let envio = this.http.put(url,JSON.stringify(disponible)).map((response: Response)=> response.json())
+	  				return envio
 	  } // FIN UPDATE PRODUCTO       
+	  
+updateStock(lista: any[]){
+
+	   this.listaProductos.splice(0, this.listaProductos.length)
+	  for (let key in lista) {
+									 	 	
+							      		 this.listaProductos.push(lista[key])
+								      	
+						      		} // FIN FOR	
+		return 1
+	  }
   
   /*
   TRABAJA CON BASE DE DATOS USUARIOS

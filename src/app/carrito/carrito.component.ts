@@ -4,6 +4,7 @@ import {PedidosComponent} from '../pedidos/pedidos.component'
 import {Pedido} from '../pedidos/pedidos'
 import {PeticionService} from '../peticion.service';
 import {VariablesService} from '../variables.service'
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'carrito',
@@ -14,38 +15,91 @@ export class CarritoComponent implements OnInit {
 total= 0;
 
 listaPedido: string[] = []
-  constructor(private peticion:PeticionService, private cuentas: VariablesService) { }
+  constructor(private peticion:PeticionService, private cuentas: VariablesService, private ir: Router) { }
 
   ngOnInit() {
  this.peticion.getCarrito()
 					 		.subscribe(
 								(data: Response) => {
 												if (data.valueOf() !='null') {
+												var nombre: string[] = []
+												var unidades: number[] = []
 												let aux: string[] = [] 
-													let cantidad = 0
-													 for (let key in data) {
-											      		aux.push(data[key])
-												      	this.total += data[key].subtotal
-												      	cantidad += 1*data[key].unidades;
-												      	
-										      		} // FIN FOR		
-									      		
-											this.listaPedido = aux
-											this.cuentas.updateCantidad(1*cantidad);
-											
+												let cantidad = 0
+												 for (let key in data) {
+										      		aux.push(data[key])
+											      	this.total += data[key].subtotal
+											      	cantidad += 1*data[key].unidades;
+											      	nombre.push(data[key].nombre)
+											      	unidades.push(data[key].unidades)
+									      		} // FIN FOR		
+										      		
+												this.listaPedido = aux
+												this.cuentas.updateCantidad(1*cantidad);
+												this.peticion.getStock()
+												 		.subscribe(
+															(stock: Response) => {
+																			this.cuentas.borraDatosBodega()
+																			 for (let key in stock) {
+																			 	for (let indice in nombre){
+																	      		if (stock[key].nombre == nombre[indice]) {
+																	      			let disponible = stock[key].disponible - unidades[indice]
+																	      			this.cuentas.updateBodega(disponible,key)								      		
+																	      		} // FIN IF
+																		      } // FIN FOR	
+																      		} // FIN FOR		
+																		
+																}
+												  		) // FIN SUBSCRIBE
 												} // FIN IF
 												else {
 														this.listaPedido = []
 												} // FIN ELSE
 									} // FIN DATA RESPONSE
 					  		)  // FIN SUBSCRIBE
+					  		
+			
   } // FIN ON INIT
 
 pagarCarrito() {
-
-	this.peticion.borraCarrito().subscribe()
-	this.cuentas.updateCantidad(0);
-	
+		let indice = this.cuentas.getBodegaProducto()
+		let cantidad = this.cuentas.getBodegaCantidad()
+		var aux: any[] = []
+		for (let key in indice) {
+	  				let producto = indice[key]
+	  				let disponible = cantidad[key]
+	  				this.peticion.updateProducto(producto,disponible)
+	  				.subscribe(
+						(data: Response) => {
+							aux.push(data)
+							if (aux.length == indice.length) {
+										 this.peticion.getStock()
+										 		.subscribe(
+													(data: Response) => {
+													
+																	let aux: string[] = [] 
+										        
+																	 for (let key in data) {
+															      		aux.push(data[key])
+																      	
+														      		} // FIN FOR		
+														      	
+																let res = this.peticion.updateStock(aux)	
+																if (res==1) {
+																	this.peticion.borraCarrito().subscribe()
+																	this.cuentas.updateCantidad(0);
+																	this.cuentas.borraDatosBodega();
+																	this.ir.navigateByUrl('catalogo/galeria')
+																}
+														}
+										  		)
+										}						
+								}	  				
+	  				)
+	  			}
+	  			
+		
+		
 } // FIN PAGAR CARRITO
 }
 
